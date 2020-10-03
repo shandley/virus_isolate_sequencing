@@ -3,6 +3,14 @@ set -e
 set -u
 set -o pipefail
 
+# Script to map (along with sorting and duplicate removal) cleaned reads to a reference genome.
+# Also performs variant calling with lofreq
+
+# Dependencies:
+# bwa: https://github.com/lh3/bwa
+# samtools: https://github.com/samtools/samtools
+# lofreq: https://csb5.github.io/lofreq/
+
 # Help function
 helpFunction()
 {
@@ -37,14 +45,14 @@ while getopts "hr:t:" opt; do
 		;;
 
                 \?) # incorrect option
-                echo "Usage: cmd [-h] [-t]"
+                echo "Usage: cmd [-h] [-r] [-t]"
                 exit
                 ;;
         esac
 done
 
 # BWA index genome
-bwa index "$REF"
+	bwa index "$REF"
 
 for i in *_R1.qc.fastq.gz; do
 
