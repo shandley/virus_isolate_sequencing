@@ -9,19 +9,19 @@ for i in *.vcf; do
 
 	grep -v "#" "$F".vcf | cut -f1-7 > "$F".first;
 
-	sed -i "s/$/\t"$F"/" "$F".cols_1-7;
+	sed -i "s/$/\t"$F"/" "$F".first;
 
-	sed -i '1iCHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tFILE' "$F".cols_1-7;
+	sed -i '1iCHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tFILE' "$F".first;
 
-	grep -v "#" "$F".vcf | cut -f8 | awk -F "|" '{ print$2"\t"$11"\t"$18"\t"$22 }' > "$F".col8;
+	grep -v "#" "$F".vcf | cut -f8 | awk -F "|" '{ print$2"\t"$3"\t"$4"\t"$5"\t"$7"\t"$8"\t"$11"\t"$19 }' > "$F".second;
 
-	sed -i '1iTYPE\tAA\tIMPACT\tGENE_INFO' "$F".col8
+	sed -i '1iVARIANT_TYPE\tIMPACT\tORF_GENE\tORF_COORDINATES\tORF_ACC\tORF_TYPE\tVARIANT_AA_CHANGE\tORF_PROTEIN' "$F".second;
 
-	paste "$F".cols_1-7 "$F".col8 > $OUT/"$F".final.vcf; 
+	paste "$F".first "$F".second > $OUT/"$F".snpEFF_ann.txt; # Save as text file for easier sharing with collaborators (can be easily opened/imported into Excel) 
 
 
 ## Clean up
-	rm *.cols_1-7;
-	rm *.col8;
+	rm *.first;
+	rm *.second;
 
 done

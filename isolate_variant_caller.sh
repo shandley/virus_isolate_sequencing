@@ -68,4 +68,7 @@ for i in *_R1.qc.fastq.gz; do
 	# Call variants with LoFreq
 	lofreq call -f "$REF" -o "$F"_vars.vcf "$F".lofreq.sorted.bam;
 
+	# Create bam index (*.bai) file for viewing in IGV
+	samtools index "$F".lofreq.sorted.bam;
+
 done
