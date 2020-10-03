@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+set -u
+set -o pipefail
 
 # Script to clean Illumina NextSeq runs
 # Dependencies:
