@@ -3,6 +3,12 @@ set -e
 set -u
 set -o pipefail
 
+# Script to annotate snps called by lofreq (or other snp caller)
+# Dependecies:
+# snpEFF: https://pcingola.github.io/SnpEff/se_introduction/
+# Reference genome in the snpEff base databases or one that you added to /data/ in the snpEFF directory
+# See: https://pcingola.github.io/SnpEff/se_buildingdb/ for instructions on how to build databases for a new genome
+
 # Creat output director
 mkdir -p annotated_vcf
 OUT=./annotated_vcf
