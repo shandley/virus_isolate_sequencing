@@ -11,8 +11,8 @@ Scripts useful for managing the analysis of viruses isolates sequenced with Illu
 
 ## Dependencies:
 
-[SeqKit](https://bioinf.shenwei.me/seqkit/)
-[fastp](https://github.com/OpenGene/fastp)
-[samtools](https://github.com/samtools/samtools)
-[bwa](https://github.com/lh3/bwa)
-[LoFreq](https://csb5.github.io/lofreq/)
+*[SeqKit](https://bioinf.shenwei.me/seqkit/)
+*[fastp](https://github.com/OpenGene/fastp)
+*[samtools](https://github.com/samtools/samtools)
+*[bwa](https://github.com/lh3/bwa)
+*[LoFreq](https://csb5.github.io/lofreq/)
