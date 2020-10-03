@@ -1,11 +1,16 @@
 #!/bin/bash
 
-# Script to clean 
-mkdir -p ./cleaned_seqs
+# Script to clean Illumina NextSeq runs
+# Dependencies:
+# Seqkit (optional): https://bioinf.shenwei.me/seqkit/
+# fastp: https://github.com/OpenGene/fastp
 
+# Create output directory
+mkdir -p ./cleaned_seqs
 OUT=./cleaned_seqs
 
 # Calculate Input Read Statistics
+# This is entirely optional. Can be slow for lots of sequences so you may want to skip
 
 	seqkit stats *_R1_*.fastq.gz -T -j 64 > $OUT/input_stats.txt
 
