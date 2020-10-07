@@ -17,7 +17,7 @@ for i in *.vcf; do
 
 	sed -i '1iVARIANT_TYPE\tIMPACT\tORF_GENE\tORF_COORDINATES\tORF_ACC\tORF_TYPE\tVARIANT_AA_CHANGE\tORF_PROTEIN' "$F".second;
 
-	grep -v "#" "$F".vcf | cut -f8 | awk -F ";" '{ print$2 }' > "$F".af;
+	grep -v "#" "$F".vcf | cut -f8 | awk -F ";" '{ print$2 }' | sed '1iAF' > "$F".af;
 
 	paste "$F".first "$F".af "$F".second > $OUT/"$F".snpEFF_ann.txt; 
 
